@@ -5,7 +5,7 @@ import { TextInput } from "react-native";
 import { useEffect } from "react";
 import { Alert, Button } from "react-native";
 import { Dimensions } from "react-native";
-import { withSpring } from "react-native-reanimated";
+import { color, withSpring } from "react-native-reanimated";
 import { keyExtractor } from "react-native/Libraries/Lists/VirtualizeUtils";
 import {
   GestureDetector,
@@ -19,7 +19,18 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
+import G4logo from "../assets/G4logo.png";
+import G5logo from "../assets/G5logo.png";
+import a7logo from "../assets/a7logo.png";
+import a19logo from "../assets/a19logo.png";
+
 export const Footer = ({ props }) => {
+  const theImages = [];
+  theImages[0] = G4logo;
+  theImages[1] = G5logo;
+  theImages[2] = a7logo;
+  theImages[3] = a19logo;
+
   const { height: SCREEN_HEIGHT } = Dimensions.get("window");
   const translateY = useSharedValue(0);
   const context = useSharedValue({ y: 0 });
@@ -28,15 +39,15 @@ export const Footer = ({ props }) => {
       context.value = { y: translateY.value };
     })
     .onUpdate((event) => {
-      console.log(event.translationY);
+      //console.log(event.translationY);
       translateY.value = event.translationY + context.value.y;
-      translateY.value = Math.max(translateY.value, -(SCREEN_HEIGHT * 0.6));
+      translateY.value = Math.max(translateY.value, -(SCREEN_HEIGHT * 0.45));
     })
     .onEnd(() => {
-      if (translateY.value > -SCREEN_HEIGHT / 3) {
-        translateY.value = withSpring(-SCREEN_HEIGHT * 0.1, { damping: 50 });
+      if (translateY.value > -SCREEN_HEIGHT / 3.5) {
+        translateY.value = withSpring(-SCREEN_HEIGHT * 0.05, { damping: 50 });
       } else {
-        translateY.value = withSpring(-SCREEN_HEIGHT * 0.5, { damping: 50 });
+        translateY.value = withSpring(-SCREEN_HEIGHT * 0.35, { damping: 50 });
       }
     });
 
@@ -55,10 +66,10 @@ export const Footer = ({ props }) => {
       <GestureDetector gesture={gesture}>
         <Animated.View style={[styles.ButtomSheet, rBottomSheetStyle]}>
           <View style={styles.line}></View>
-          <Text>ddd</Text>
         </Animated.View>
       </GestureDetector>
     );
+    console.log(props[0]);
   } else {
     return (
       <GestureDetector gesture={gesture}>
@@ -67,16 +78,12 @@ export const Footer = ({ props }) => {
             <View style={styles.line}></View>
             <Text style={styles.text}>Best way:</Text>
             <View style={styles.wayInfortation}>
-              <Text style={styles.text}>Arrive at: 12:21</Text>
+              <Text style={styles.time}>
+                Arrive at: {props[2]}:{props[3]}
+              </Text>
               <View style={styles.way}>
-                <Image
-                  style={styles.image}
-                  source={require("../assets/" + "5G" + "logo.png")}
-                />
-                <Image
-                  style={styles.image}
-                  source={require("../assets/7logo.png")}
-                />
+                <Image style={styles.image} source={theImages[props[0]]} />
+                <Image style={styles.image} source={theImages[props[1]]} />
               </View>
             </View>
           </View>
@@ -122,6 +129,12 @@ const styles = StyleSheet.create({
   },
   wayInfortation: {
     borderRadius: 20,
-    backgroundColor: "rgba(242, 225, 255, 1)",
+    backgroundColor: "rgba(242, 225, 255, 0.6)",
+  },
+  time: {
+    fontSize: 21,
+    color: "black",
+    marginVertical: 15,
+    marginHorizontal: 10,
   },
 });

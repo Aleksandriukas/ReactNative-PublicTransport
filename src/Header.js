@@ -12,7 +12,7 @@ export const Header = ({ onSubmit }) => {
     setFinishPoint("");
   };
   const pressHandler = () => {
-    if (entryPoint.trim()) {
+    if (entryPoint.trim() && finishPoint.trim()) {
       onSubmit(entryPoint, finishPoint);
     } else {
       Alert.alert("Emty line");
@@ -35,8 +35,8 @@ export const Header = ({ onSubmit }) => {
         finishPoint={finishPoint}
         placeholder={"Input text"}
       />
-      <View>
-        <Button title="Find best way" onPress={pressHandler} />
+      <View style={styles.button}>
+        <Button color="white" title="Find best way" onPress={pressHandler} />
       </View>
       <View></View>
     </SafeAreaView>
@@ -45,8 +45,10 @@ export const Header = ({ onSubmit }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: "30%",
-
+    height: "28%",
+    position: "absolute",
+    zIndex: 1,
+    width: "100%",
     backgroundColor: "rgba(107, 72, 123, 0.95)",
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -63,5 +65,11 @@ const styles = StyleSheet.create({
   textStyle: {
     color: "white",
     fontSize: 21,
+  },
+  button: {
+    backgroundColor: "rgba(242, 225, 255, 0.7)",
+    borderRadius: 20,
+    width: "45%",
+    marginTop: 25,
   },
 });

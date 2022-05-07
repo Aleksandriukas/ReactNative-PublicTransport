@@ -2,13 +2,16 @@ import React from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { useState } from "react";
 import { Header } from "./Header";
-import BottomSheet from "@gorhom/bottom-sheet";
+import BottomSheet, { SCREEN_HEIGHT } from "@gorhom/bottom-sheet";
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import Render from "react-native-web/dist/cjs/exports/render";
 import { FlatList } from "react-native-gesture-handler";
 import { Footer } from "./Footer";
 import { CalculateBestWay } from "./CalculateBestWay";
+import { Map } from "./Map";
+import { Dimensions } from "react-native-web";
 export const Home = (props) => {
+  const { height: SCREEN_HEIGHT } = Dimensions.get("window");
   const [startPoint, setStartPoint] = useState("");
   const [bestWay, setBestWay] = useState(["0"]);
   const [finishPoint, setFinishPoint] = useState("");
@@ -20,10 +23,8 @@ export const Home = (props) => {
 
   return (
     <View style={styles.container}>
-      <Header onSubmit={addStartFinish} />
-      <Text>
-        {startPoint} {finishPoint}
-      </Text>
+      <Header onSubmit={addStartFinish} style={styles.header} />
+      <Map setBestWay={styles.map} />
       <Footer props={bestWay} />
     </View>
   );
@@ -36,4 +37,8 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   footer: {},
+  map: {
+    
+  },
+  header: {},
 });
