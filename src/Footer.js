@@ -66,16 +66,18 @@ export const Footer = ({ props }) => {
           <View>
             <View style={styles.line}></View>
             <Text style={styles.text}>Best way:</Text>
-            <Text style={styles.text}>Arrive at: 12:21</Text>
-            <View style={styles.way}>
-              <Image
-                style={styles.image}
-                source={require("../assets/5Glogo.png")}
-              />
-              <Image
-                style={styles.image}
-                source={require("../assets/7logo.png")}
-              />
+            <View style={styles.wayInfortation}>
+              <Text style={styles.text}>Arrive at: 12:21</Text>
+              <View style={styles.way}>
+                <Image
+                  style={styles.image}
+                  source={require("../assets/" + "5G" + "logo.png")}
+                />
+                <Image
+                  style={styles.image}
+                  source={require("../assets/7logo.png")}
+                />
+              </View>
             </View>
           </View>
         </Animated.View>
@@ -108,7 +110,6 @@ const styles = StyleSheet.create({
     height: 64,
   },
   image: {
-    marginVertical: 20,
     marginHorizontal: 10,
     height: 50,
     width: 50,
@@ -116,6 +117,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 21,
     color: "white",
-    marginVertical: 25,
+    marginVertical: 15,
+    marginHorizontal: 10,
+  },
+  wayInfortation: {
+    borderRadius: 20,
+    backgroundColor: "rgba(242, 225, 255, 1)",
   },
 });
