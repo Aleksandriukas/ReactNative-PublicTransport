@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -24,9 +24,6 @@ export default function App() {
         }}
       >
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="login" component={Login} />
-        <Drawer.Screen name="logout" component={Logout} />
-        <Drawer.Screen name="shortcuts" component={Shortcuts} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
