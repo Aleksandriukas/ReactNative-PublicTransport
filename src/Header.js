@@ -21,7 +21,7 @@ export const Header = ({ onSubmit }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.textStyle}>From</Text>
+      <Text style={{ color: "white", marginTop: 30, fontSize: 21 }}>From</Text>
       <TextInput
         style={styles.inputSection}
         onChangeText={(text) => setEntryPoint(text)}
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   inputSection: {
     backgroundColor: "rgba(242, 225, 255, 0.7)",
     width: "70%",
-    height: "12%",
+    height: "10%",
     borderRadius: 30,
     marginVertical: 5,
   },

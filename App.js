@@ -9,6 +9,7 @@ import { Logout } from "./src/Logout";
 import { Shortcuts } from "./src/Shortcuts";
 import { Home } from "./src/Home";
 import { CustomDrawer } from "./src/CustomDrawer";
+import { SafeAreaView } from "react-native";
 const Drawer = createDrawerNavigator();
 
 export default function App() {

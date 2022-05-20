@@ -22,11 +22,11 @@ export const Home = (props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header onSubmit={addStartFinish} style={styles.header} />
       <Map setBestWay={styles.map} />
       <Footer props={bestWay} />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -37,8 +37,6 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   footer: {},
-  map: {
-    
-  },
+  map: {},
   header: {},
 });
